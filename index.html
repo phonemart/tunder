@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Thunder Fin - ศูนย์จำหน่าย iPhone ครบวงจร</title>
-    <meta name="description" content="Thunder Fin ศูนย์จำหน่าย iPhone ทุกรุ่น ราคาพิเศษ สินค้าคุณภาพ รับประกันทุกเครื่อง">
+    <title>TunderFin - ศูนย์จำหน่าย iPhone ครบวงจร</title>
+    <meta name="description" content="TunderFin ศูนย์จำหน่าย iPhone ทุกรุ่น ราคาพิเศษ สินค้าคุณภาพ รับประกันทุกเครื่อง">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,10 +18,10 @@
                     },
                     colors: {
                         'fin': {
-                            'dark': '#1a1a1a',
-                            'gold': '#f5a623',
-                            'yellow': '#ffd000',
-                            'light': '#fff9e6',
+                            'yellow': '#FFD600',
+                            'gold': '#FFC107',
+                            'dark': '#212121',
+                            'gray': '#757575',
                         }
                     }
                 }
@@ -32,495 +32,461 @@
         * {
             font-family: 'Prompt', sans-serif;
         }
-        .hero-gradient {
-            background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
-        }
-        .gold-gradient {
-            background: linear-gradient(135deg, #f5a623 0%, #ffd000 100%);
-        }
-        .card-lift {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .card-lift:hover {
-            transform: translateY(-8px) scale(1.02);
-        }
-        .glow-btn {
-            box-shadow: 0 0 20px rgba(245, 166, 35, 0.4);
-            transition: all 0.3s ease;
-        }
-        .glow-btn:hover {
-            box-shadow: 0 0 30px rgba(245, 166, 35, 0.6);
-        }
-        .bounce-slow {
-            animation: bounceSlow 2.5s ease-in-out infinite;
-        }
-        @keyframes bounceSlow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-        .shine {
-            position: relative;
-            overflow: hidden;
-        }
-        .shine::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to right,
-                rgba(255,255,255,0) 0%,
-                rgba(255,255,255,0.1) 50%,
-                rgba(255,255,255,0) 100%
-            );
-            transform: rotate(30deg);
-            animation: shine 3s infinite;
-        }
-        @keyframes shine {
-            0% { transform: translateX(-100%) rotate(30deg); }
-            100% { transform: translateX(100%) rotate(30deg); }
-        }
-        /* Phone Card Styles */
-        .phone-card {
-            background: linear-gradient(145deg, #ffffff 0%, #f8f8f8 100%);
-            border: 1px solid rgba(245, 166, 35, 0.2);
-        }
-        .phone-card:hover {
-            border-color: rgba(245, 166, 35, 0.5);
-        }
-        .phone-icon {
-            width: 45px;
-            height: 90px;
-            background: linear-gradient(180deg, #2d2d2d 0%, #1a1a1a 100%);
-            border-radius: 12px;
-            position: relative;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-        .phone-icon::before {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 4px;
-            right: 4px;
-            bottom: 5px;
-            background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
-            border-radius: 8px;
-        }
-        .phone-icon::after {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 12px;
-            height: 4px;
-            background: #000;
-            border-radius: 2px;
-        }
-        .phone-icon .home-bar {
-            position: absolute;
-            bottom: 3px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 18px;
-            height: 3px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 2px;
-        }
-        /* Mobile Responsive */
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem !important;
-            }
-            .section-title {
-                font-size: 1.5rem !important;
-            }
-            .phone-icon {
-                width: 35px;
-                height: 70px;
-            }
-        }
-        @supports (padding: max(0px)) {
-            .fixed-buttons {
-                bottom: max(20px, env(safe-area-inset-bottom));
-            }
-        }
         html {
             scroll-behavior: smooth;
         }
         body {
             overflow-x: hidden;
         }
+        .hero-bg {
+            background: linear-gradient(135deg, #FFD600 0%, #FFC107 100%);
+        }
+        .step-line::after {
+            content: '';
+            position: absolute;
+            top: 35px;
+            left: calc(50% + 40px);
+            width: calc(100% - 80px);
+            height: 2px;
+            background: #E0E0E0;
+        }
+        .step-item:last-child .step-line::after {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .step-line::after {
+                display: none;
+            }
+        }
+        .review-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 214, 0, 0.2);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #FFD600 0%, #FFC107 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 214, 0, 0.4);
+        }
+        .phone-select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23757575'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 20px;
+        }
     </style>
 </head>
-<body class="bg-fin-light">
+<body class="bg-white">
     <!-- Header -->
-    <header class="bg-fin-dark text-white py-3 sticky top-0 z-50 shadow-xl">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="images/logo.png" alt="TunderFin" class="h-10 w-auto">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-3">
+                <a href="/">
+                    <img src="images/logo.png" alt="TunderFin" class="h-10 md:h-12 w-auto">
+                </a>
+                <div class="flex items-center space-x-4">
+                    <a href="tel:+66931394538" class="hidden md:flex items-center space-x-2 text-fin-dark hover:text-fin-gold transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        <span class="font-semibold">093-139-4538</span>
+                    </a>
+                    <a href="https://line.me/R/ti/p/@thunderfin" target="_blank" class="btn-primary text-fin-dark px-5 py-2 rounded-full font-semibold text-sm flex items-center space-x-2">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.349 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+                        </svg>
+                        <span>แอดไลน์</span>
+                    </a>
+                </div>
             </div>
-            <a href="tel:+66931394538" class="hidden md:flex items-center space-x-2 gold-gradient text-fin-dark px-5 py-2 rounded-full font-semibold hover:opacity-90 transition">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                </svg>
-                <span>093-139-4538</span>
-            </a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-gradient text-white py-16 md:py-28 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-fin-gold/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-72 h-72 bg-fin-yellow/10 rounded-full blur-3xl"></div>
-        <div class="container mx-auto px-4 relative">
-            <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-10">
+    <section class="hero-bg py-12 md:py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-10">
                 <div class="md:w-1/2 text-center md:text-left">
-                    <div class="inline-block gold-gradient text-fin-dark px-4 py-1 rounded-full text-sm font-semibold mb-6">
-                        ราคาพิเศษ ประจำเดือนนี้
-                    </div>
-                    <h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-                        iPhone <span class="text-fin-yellow">ทุกรุ่น</span><br>
-                        ราคาดี มีประกัน
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-fin-dark mb-4 leading-tight">
+                        ศูนย์จำหน่าย iPhone<br>ราคาดี มีประกัน
                     </h1>
-                    <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-md mx-auto md:mx-0">
-                        ศูนย์จำหน่าย iPhone คุณภาพ ราคาถูกกว่าศูนย์ พร้อมรับประกันทุกเครื่อง บริการหลังการขายครบวงจร
+                    <p class="text-fin-dark/80 text-lg mb-6">
+                        สินค้าคุณภาพ ราคาถูกกว่าศูนย์ พร้อมรับประกันทุกเครื่อง
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                        <a href="https://line.me/R/ti/p/@thunderfin" target="_blank" class="glow-btn gold-gradient text-fin-dark px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center space-x-2">
-                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.349 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
-                            </svg>
-                            <span>สอบถามราคา</span>
-                        </a>
-                        <a href="tel:+66931394538" class="bg-white/10 backdrop-blur text-white border border-white/30 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center space-x-2 hover:bg-white/20 transition">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                            </svg>
-                            <span>โทรสั่งซื้อ</span>
-                        </a>
+
+                    <!-- Quick Form -->
+                    <div class="bg-white rounded-2xl shadow-xl p-6 max-w-md mx-auto md:mx-0">
+                        <h3 class="font-bold text-fin-dark mb-4 text-lg">สนใจรุ่นไหน? สอบถามราคาได้เลย</h3>
+                        <div class="space-y-3">
+                            <select class="phone-select w-full px-4 py-3 border border-gray-200 rounded-xl appearance-none focus:outline-none focus:border-fin-yellow text-fin-gray">
+                                <option>เลือกรุ่น iPhone</option>
+                                <option>iPhone 17 Pro Max</option>
+                                <option>iPhone 16 Pro Max</option>
+                                <option>iPhone 16 Pro</option>
+                                <option>iPhone 16</option>
+                                <option>iPhone 15 Pro Max</option>
+                                <option>iPhone 15 Pro</option>
+                                <option>iPhone 15</option>
+                                <option>iPhone 14 Pro Max</option>
+                                <option>iPhone 14 Pro</option>
+                                <option>iPhone 14</option>
+                            </select>
+                            <select class="phone-select w-full px-4 py-3 border border-gray-200 rounded-xl appearance-none focus:outline-none focus:border-fin-yellow text-fin-gray">
+                                <option>เลือกความจุ</option>
+                                <option>128GB</option>
+                                <option>256GB</option>
+                                <option>512GB</option>
+                                <option>1TB</option>
+                            </select>
+                            <a href="https://line.me/R/ti/p/@thunderfin" target="_blank" class="btn-primary w-full py-3 rounded-xl font-bold text-fin-dark flex items-center justify-center space-x-2">
+                                <span>สอบถามราคา</span>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="md:w-1/2 flex justify-center">
-                    <div class="bounce-slow relative">
-                        <img src="images/hero-phones.webp" alt="iPhone" class="w-full max-w-sm md:max-w-md drop-shadow-2xl">
-                        <div class="absolute -top-4 -right-4 w-24 h-24 bg-fin-gold/30 rounded-full blur-2xl"></div>
-                    </div>
+                    <img src="images/hero-phones.webp" alt="iPhone" class="w-full max-w-sm md:max-w-md drop-shadow-2xl">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="py-8 bg-white border-b">
+    <!-- How It Works -->
+    <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div>
-                    <p class="text-3xl md:text-4xl font-bold text-fin-gold">500+</p>
-                    <p class="text-gray-600">เครื่องพร้อมส่ง</p>
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-fin-dark mb-2">ขั้นตอนง่ายๆ</h2>
+                <p class="text-fin-gray">ซื้อ iPhone กับเราง่ายแค่ 3 ขั้นตอน</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="step-item relative text-center">
+                    <div class="step-line relative">
+                        <div class="w-20 h-20 bg-fin-yellow rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                            <svg class="w-10 h-10 text-fin-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-fin-dark text-lg mb-2">1. เลือกรุ่น</h3>
+                    <p class="text-fin-gray text-sm">เลือกรุ่น iPhone และความจุที่ต้องการ</p>
                 </div>
-                <div>
-                    <p class="text-3xl md:text-4xl font-bold text-fin-gold">3</p>
-                    <p class="text-gray-600">สาขาทั่วกรุงเทพฯ</p>
+                <div class="step-item relative text-center">
+                    <div class="step-line relative">
+                        <div class="w-20 h-20 bg-fin-yellow rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                            <svg class="w-10 h-10 text-fin-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-fin-dark text-lg mb-2">2. สอบถามราคา</h3>
+                    <p class="text-fin-gray text-sm">แอดไลน์สอบถามราคาและโปรโมชั่น</p>
                 </div>
-                <div>
-                    <p class="text-3xl md:text-4xl font-bold text-fin-gold">4.9</p>
-                    <p class="text-gray-600">คะแนนรีวิว</p>
-                </div>
-                <div>
-                    <p class="text-3xl md:text-4xl font-bold text-fin-gold">5 ปี</p>
-                    <p class="text-gray-600">ประสบการณ์</p>
+                <div class="step-item relative text-center">
+                    <div class="step-line relative">
+                        <div class="w-20 h-20 bg-fin-yellow rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                            <svg class="w-10 h-10 text-fin-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-fin-dark text-lg mb-2">3. รับเครื่อง</h3>
+                    <p class="text-fin-gray text-sm">รับเครื่องที่สาขาหรือจัดส่งถึงบ้าน</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Why Choose Us -->
-    <section class="py-16 bg-white">
+    <section class="py-16">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-14">
-                <h2 class="section-title text-3xl md:text-4xl font-bold text-fin-dark mb-3">ทำไมต้อง ThunderFin?</h2>
-                <p class="text-gray-500 text-lg">ศูนย์จำหน่าย iPhone ที่คุณไว้วางใจ</p>
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-fin-dark mb-2">ทำไมต้องเลือก TunderFin?</h2>
+                <p class="text-fin-gray">เรามีข้อดีที่ทำให้ลูกค้าไว้วางใจ</p>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="card-lift bg-gradient-to-br from-amber-50 to-white p-6 rounded-2xl border border-amber-100 text-center">
-                    <div class="w-14 h-14 gold-gradient rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                        <svg class="w-7 h-7 text-fin-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="feature-card bg-white border border-gray-100 rounded-2xl p-6 text-center">
+                    <div class="w-16 h-16 bg-fin-yellow/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-fin-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-bold text-fin-dark mb-2">ราคาถูกที่สุด</h3>
-                    <p class="text-gray-500 text-sm">การันตีราคาถูกกว่าศูนย์ คุ้มค่าทุกบาท</p>
+                    <h3 class="font-bold text-fin-dark mb-2">ราคาถูกที่สุด</h3>
+                    <p class="text-fin-gray text-sm">ราคาถูกกว่าศูนย์ การันตีคุ้มค่าทุกบาท</p>
                 </div>
-                <div class="card-lift bg-gradient-to-br from-amber-50 to-white p-6 rounded-2xl border border-amber-100 text-center">
-                    <div class="w-14 h-14 gold-gradient rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                        <svg class="w-7 h-7 text-fin-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="feature-card bg-white border border-gray-100 rounded-2xl p-6 text-center">
+                    <div class="w-16 h-16 bg-fin-yellow/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-fin-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-bold text-fin-dark mb-2">รับประกันแท้</h3>
-                    <p class="text-gray-500 text-sm">รับประกันคุณภาพทุกเครื่อง เคลมง่าย</p>
+                    <h3 class="font-bold text-fin-dark mb-2">รับประกันคุณภาพ</h3>
+                    <p class="text-fin-gray text-sm">สินค้าทุกเครื่องรับประกัน เคลมง่าย</p>
                 </div>
-                <div class="card-lift bg-gradient-to-br from-amber-50 to-white p-6 rounded-2xl border border-amber-100 text-center">
-                    <div class="w-14 h-14 gold-gradient rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                        <svg class="w-7 h-7 text-fin-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="feature-card bg-white border border-gray-100 rounded-2xl p-6 text-center">
+                    <div class="w-16 h-16 bg-fin-yellow/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-fin-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-bold text-fin-dark mb-2">พร้อมส่งทันที</h3>
-                    <p class="text-gray-500 text-sm">สต็อกพร้อม รับเครื่องได้เลย</p>
+                    <h3 class="font-bold text-fin-dark mb-2">พร้อมส่งทันที</h3>
+                    <p class="text-fin-gray text-sm">สต็อกพร้อมส่ง รับเครื่องได้เลย</p>
                 </div>
-                <div class="card-lift bg-gradient-to-br from-amber-50 to-white p-6 rounded-2xl border border-amber-100 text-center">
-                    <div class="w-14 h-14 gold-gradient rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                        <svg class="w-7 h-7 text-fin-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="feature-card bg-white border border-gray-100 rounded-2xl p-6 text-center">
+                    <div class="w-16 h-16 bg-fin-yellow/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-fin-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-bold text-fin-dark mb-2">3 สาขา</h3>
-                    <p class="text-gray-500 text-sm">มีหน้าร้าน เดินทางสะดวก</p>
+                    <h3 class="font-bold text-fin-dark mb-2">มีหน้าร้าน</h3>
+                    <p class="text-fin-gray text-sm">3 สาขา เดินทางสะดวก น่าเชื่อถือ</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section class="py-16 bg-fin-light">
+    <!-- Products -->
+    <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-14">
-                <h2 class="section-title text-3xl md:text-4xl font-bold text-fin-dark mb-3">สินค้าของเรา</h2>
-                <p class="text-gray-500 text-lg">iPhone ครบทุกรุ่น ทุกความจุ</p>
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-fin-dark mb-2">สินค้าของเรา</h2>
+                <p class="text-fin-gray">iPhone ครบทุกรุ่น พร้อมส่ง</p>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                <div class="phone-card card-lift p-4 rounded-2xl text-center">
-                    <div class="phone-icon mx-auto mb-3">
-                        <div class="home-bar"></div>
-                    </div>
-                    <p class="font-semibold text-fin-dark text-sm">iPhone 17 Pro Max</p>
-                    <p class="text-fin-gold text-xs font-medium">สินค้าใหม่</p>
-                </div>
-                <div class="phone-card card-lift p-4 rounded-2xl text-center">
-                    <div class="phone-icon mx-auto mb-3">
-                        <div class="home-bar"></div>
-                    </div>
-                    <p class="font-semibold text-fin-dark text-sm">iPhone 16 Pro Max</p>
-                    <p class="text-fin-gold text-xs font-medium">ขายดี</p>
-                </div>
-                <div class="phone-card card-lift p-4 rounded-2xl text-center">
-                    <div class="phone-icon mx-auto mb-3">
-                        <div class="home-bar"></div>
-                    </div>
-                    <p class="font-semibold text-fin-dark text-sm">iPhone 16 Pro</p>
-                    <p class="text-gray-400 text-xs">พร้อมส่ง</p>
-                </div>
-                <div class="phone-card card-lift p-4 rounded-2xl text-center">
-                    <div class="phone-icon mx-auto mb-3">
-                        <div class="home-bar"></div>
-                    </div>
-                    <p class="font-semibold text-fin-dark text-sm">iPhone 16</p>
-                    <p class="text-gray-400 text-xs">พร้อมส่ง</p>
-                </div>
-                <div class="phone-card card-lift p-4 rounded-2xl text-center">
-                    <div class="phone-icon mx-auto mb-3">
-                        <div class="home-bar"></div>
-                    </div>
-                    <p class="font-semibold text-fin-dark text-sm">iPhone 15 Pro Max</p>
-                    <p class="text-gray-400 text-xs">พร้อมส่ง</p>
-                </div>
-                <div class="phone-card card-lift p-4 rounded-2xl text-center">
-                    <div class="phone-icon mx-auto mb-3">
-                        <div class="home-bar"></div>
-                    </div>
-                    <p class="font-semibold text-fin-dark text-sm">iPhone 15 Pro</p>
-                    <p class="text-gray-400 text-xs">พร้อมส่ง</p>
-                </div>
-                <div class="phone-card card-lift p-4 rounded-2xl text-center">
-                    <div class="phone-icon mx-auto mb-3">
-                        <div class="home-bar"></div>
-                    </div>
-                    <p class="font-semibold text-fin-dark text-sm">iPhone 15</p>
-                    <p class="text-gray-400 text-xs">พร้อมส่ง</p>
-                </div>
-                <div class="phone-card card-lift p-4 rounded-2xl text-center">
-                    <div class="phone-icon mx-auto mb-3">
-                        <div class="home-bar"></div>
-                    </div>
-                    <p class="font-semibold text-fin-dark text-sm">iPhone 14 Pro Max</p>
-                    <p class="text-gray-400 text-xs">พร้อมส่ง</p>
-                </div>
-                <div class="phone-card card-lift p-4 rounded-2xl text-center">
-                    <div class="phone-icon mx-auto mb-3">
-                        <div class="home-bar"></div>
-                    </div>
-                    <p class="font-semibold text-fin-dark text-sm">iPhone 14 Pro</p>
-                    <p class="text-gray-400 text-xs">พร้อมส่ง</p>
-                </div>
-                <div class="phone-card card-lift p-4 rounded-2xl text-center">
-                    <div class="phone-icon mx-auto mb-3">
-                        <div class="home-bar"></div>
-                    </div>
-                    <p class="font-semibold text-fin-dark text-sm">iPhone 14</p>
-                    <p class="text-gray-400 text-xs">พร้อมส่ง</p>
-                </div>
-                <div class="phone-card card-lift p-4 rounded-2xl text-center flex flex-col items-center justify-center">
-                    <div class="w-12 h-12 bg-fin-gold/20 rounded-full flex items-center justify-center mb-2">
-                        <svg class="w-6 h-6 text-fin-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"/>
-                        </svg>
-                    </div>
-                    <p class="font-semibold text-fin-dark text-sm">รุ่นอื่นๆ</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center p-8 rounded-3xl bg-gradient-to-br from-amber-50 to-white border border-amber-100">
-                    <div class="w-20 h-20 gold-gradient rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
-                        <svg class="w-10 h-10 text-fin-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                <a href="https://line.me/R/ti/p/@thunderfin" target="_blank" class="bg-white rounded-2xl p-4 text-center hover:shadow-lg transition border border-gray-100">
+                    <div class="w-16 h-16 bg-gray-100 rounded-2xl mx-auto mb-3 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-fin-dark mb-3">จำหน่าย iPhone</h3>
-                    <p class="text-gray-500">สินค้าคุณภาพ ราคาพิเศษ ครบทุกรุ่น ทุกความจุ พร้อมส่งทันที</p>
-                </div>
-                <div class="text-center p-8 rounded-3xl bg-gradient-to-br from-amber-50 to-white border border-amber-100">
-                    <div class="w-20 h-20 gold-gradient rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
-                        <svg class="w-10 h-10 text-fin-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    <p class="font-semibold text-fin-dark text-sm">iPhone 17 Pro Max</p>
+                    <p class="text-fin-gold text-xs mt-1">สินค้าใหม่</p>
+                </a>
+                <a href="https://line.me/R/ti/p/@thunderfin" target="_blank" class="bg-white rounded-2xl p-4 text-center hover:shadow-lg transition border border-gray-100">
+                    <div class="w-16 h-16 bg-gray-100 rounded-2xl mx-auto mb-3 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-fin-dark mb-3">รับประกันคุณภาพ</h3>
-                    <p class="text-gray-500">ตรวจสอบทุกเครื่องก่อนส่งมอบ รับประกันหลังการขาย เคลมง่าย</p>
-                </div>
-                <div class="text-center p-8 rounded-3xl bg-gradient-to-br from-amber-50 to-white border border-amber-100">
-                    <div class="w-20 h-20 gold-gradient rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
-                        <svg class="w-10 h-10 text-fin-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    <p class="font-semibold text-fin-dark text-sm">iPhone 16 Pro Max</p>
+                    <p class="text-fin-gold text-xs mt-1">ขายดี</p>
+                </a>
+                <a href="https://line.me/R/ti/p/@thunderfin" target="_blank" class="bg-white rounded-2xl p-4 text-center hover:shadow-lg transition border border-gray-100">
+                    <div class="w-16 h-16 bg-gray-100 rounded-2xl mx-auto mb-3 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-fin-dark mb-3">ซ่อมบำรุง</h3>
-                    <p class="text-gray-500">บริการซ่อมโดยช่างผู้ชำนาญ อะไหล่แท้ รวดเร็ว ราคาเป็นธรรม</p>
-                </div>
+                    <p class="font-semibold text-fin-dark text-sm">iPhone 16 Pro</p>
+                    <p class="text-gray-400 text-xs mt-1">พร้อมส่ง</p>
+                </a>
+                <a href="https://line.me/R/ti/p/@thunderfin" target="_blank" class="bg-white rounded-2xl p-4 text-center hover:shadow-lg transition border border-gray-100">
+                    <div class="w-16 h-16 bg-gray-100 rounded-2xl mx-auto mb-3 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <p class="font-semibold text-fin-dark text-sm">iPhone 16</p>
+                    <p class="text-gray-400 text-xs mt-1">พร้อมส่ง</p>
+                </a>
+                <a href="https://line.me/R/ti/p/@thunderfin" target="_blank" class="bg-white rounded-2xl p-4 text-center hover:shadow-lg transition border border-gray-100">
+                    <div class="w-16 h-16 bg-gray-100 rounded-2xl mx-auto mb-3 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <p class="font-semibold text-fin-dark text-sm">iPhone 15 Pro Max</p>
+                    <p class="text-gray-400 text-xs mt-1">พร้อมส่ง</p>
+                </a>
+                <a href="https://line.me/R/ti/p/@thunderfin" target="_blank" class="bg-white rounded-2xl p-4 text-center hover:shadow-lg transition border border-gray-100">
+                    <div class="w-16 h-16 bg-gray-100 rounded-2xl mx-auto mb-3 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <p class="font-semibold text-fin-dark text-sm">iPhone 15 Pro</p>
+                    <p class="text-gray-400 text-xs mt-1">พร้อมส่ง</p>
+                </a>
+                <a href="https://line.me/R/ti/p/@thunderfin" target="_blank" class="bg-white rounded-2xl p-4 text-center hover:shadow-lg transition border border-gray-100">
+                    <div class="w-16 h-16 bg-gray-100 rounded-2xl mx-auto mb-3 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <p class="font-semibold text-fin-dark text-sm">iPhone 15</p>
+                    <p class="text-gray-400 text-xs mt-1">พร้อมส่ง</p>
+                </a>
+                <a href="https://line.me/R/ti/p/@thunderfin" target="_blank" class="bg-white rounded-2xl p-4 text-center hover:shadow-lg transition border border-gray-100">
+                    <div class="w-16 h-16 bg-gray-100 rounded-2xl mx-auto mb-3 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <p class="font-semibold text-fin-dark text-sm">iPhone 14 Pro Max</p>
+                    <p class="text-gray-400 text-xs mt-1">พร้อมส่ง</p>
+                </a>
+                <a href="https://line.me/R/ti/p/@thunderfin" target="_blank" class="bg-white rounded-2xl p-4 text-center hover:shadow-lg transition border border-gray-100">
+                    <div class="w-16 h-16 bg-gray-100 rounded-2xl mx-auto mb-3 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <p class="font-semibold text-fin-dark text-sm">iPhone 14</p>
+                    <p class="text-gray-400 text-xs mt-1">พร้อมส่ง</p>
+                </a>
+                <a href="https://line.me/R/ti/p/@thunderfin" target="_blank" class="bg-white rounded-2xl p-4 text-center hover:shadow-lg transition border border-fin-yellow">
+                    <div class="w-16 h-16 bg-fin-yellow/20 rounded-2xl mx-auto mb-3 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-fin-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                        </svg>
+                    </div>
+                    <p class="font-semibold text-fin-dark text-sm">รุ่นอื่นๆ</p>
+                    <p class="text-fin-gold text-xs mt-1">สอบถามได้</p>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Reviews -->
-    <section class="py-16 bg-fin-dark text-white">
+    <section class="py-16">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <div class="flex items-center justify-center space-x-1 text-fin-yellow text-3xl mb-4">
+                <div class="flex items-center justify-center space-x-1 text-fin-yellow text-2xl mb-3">
                     <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
                 </div>
-                <h2 class="section-title text-3xl md:text-4xl font-bold mb-2">รีวิวจากลูกค้า</h2>
-                <p class="text-gray-400">คะแนน 4.9/5 จากลูกค้ากว่า 200 ท่าน</p>
+                <h2 class="text-2xl md:text-3xl font-bold text-fin-dark mb-2">รีวิวจากลูกค้า</h2>
+                <p class="text-fin-gray">คะแนน 4.9/5 จากลูกค้ากว่า 200 ท่าน</p>
             </div>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10">
+            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="review-card bg-white border border-gray-100 rounded-2xl p-6">
                     <div class="flex items-center space-x-1 text-fin-yellow mb-4">
                         <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
                     </div>
-                    <p class="text-gray-300 mb-4">"ซื้อ iPhone 16 Pro Max ราคาถูกกว่าศูนย์หลายพัน เครื่องใหม่แกะกล่อง มีประกันด้วย ประทับใจมากครับ"</p>
-                    <p class="text-gray-500 text-sm">- คุณธนา</p>
+                    <p class="text-fin-gray mb-4">"ซื้อ iPhone 16 Pro Max ราคาถูกกว่าศูนย์หลายพัน เครื่องใหม่แกะกล่อง มีประกันด้วย ประทับใจมากครับ"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-fin-yellow rounded-full flex items-center justify-center text-fin-dark font-bold">ธ</div>
+                        <div class="ml-3">
+                            <p class="font-semibold text-fin-dark text-sm">คุณธนา</p>
+                            <p class="text-fin-gray text-xs">ลูกค้าสาขารัชดา</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10">
+                <div class="review-card bg-white border border-gray-100 rounded-2xl p-6">
                     <div class="flex items-center space-x-1 text-fin-yellow mb-4">
                         <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
                     </div>
-                    <p class="text-gray-300 mb-4">"บริการดีมาก พนักงานให้คำแนะนำละเอียด ช่วยเลือกรุ่นที่เหมาะกับการใช้งาน ขอบคุณค่ะ"</p>
-                    <p class="text-gray-500 text-sm">- คุณพิม</p>
+                    <p class="text-fin-gray mb-4">"บริการดีมาก พนักงานให้คำแนะนำละเอียด ช่วยเลือกรุ่นที่เหมาะกับการใช้งาน ขอบคุณค่ะ"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-fin-yellow rounded-full flex items-center justify-center text-fin-dark font-bold">พ</div>
+                        <div class="ml-3">
+                            <p class="font-semibold text-fin-dark text-sm">คุณพิม</p>
+                            <p class="text-fin-gray text-xs">ลูกค้าสาขาบางกะปิ</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10">
+                <div class="review-card bg-white border border-gray-100 rounded-2xl p-6">
                     <div class="flex items-center space-x-1 text-fin-yellow mb-4">
                         <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
                     </div>
-                    <p class="text-gray-300 mb-4">"ร้านมีหน้าร้านชัดเจน ไว้ใจได้ สินค้าคุณภาพ บริการหลังการขายดีมาก กลับมาซื้อซ้ำแน่นอน"</p>
-                    <p class="text-gray-500 text-sm">- คุณเจมส์</p>
+                    <p class="text-fin-gray mb-4">"ร้านมีหน้าร้านชัดเจน ไว้ใจได้ สินค้าคุณภาพ บริการหลังการขายดีมาก กลับมาซื้อซ้ำแน่นอน"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-fin-yellow rounded-full flex items-center justify-center text-fin-dark font-bold">จ</div>
+                        <div class="ml-3">
+                            <p class="font-semibold text-fin-dark text-sm">คุณเจมส์</p>
+                            <p class="text-fin-gray text-xs">ลูกค้าสาขา Westgate</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Locations -->
-    <section class="py-16 bg-white">
+    <!-- Branches -->
+    <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="section-title text-3xl md:text-4xl font-bold text-fin-dark mb-3">สาขาของเรา</h2>
-                <p class="text-gray-500 text-lg">พร้อมให้บริการ 3 สาขา</p>
+                <h2 class="text-2xl md:text-3xl font-bold text-fin-dark mb-2">สาขาของเรา</h2>
+                <p class="text-fin-gray">พร้อมให้บริการ 3 สาขา</p>
             </div>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="card-lift p-6 rounded-2xl bg-gradient-to-br from-amber-50 to-white border border-amber-100">
-                    <div class="w-12 h-12 gold-gradient rounded-xl flex items-center justify-center mb-4 shadow">
+            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                    <div class="w-12 h-12 bg-fin-yellow rounded-xl flex items-center justify-center mb-4">
                         <svg class="w-6 h-6 text-fin-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-bold text-fin-dark mb-2">สาขา The Street รัชดา</h3>
-                    <p class="text-gray-500 text-sm mb-4">139 อาคาร The Street Ratchada ชั้น 3<br>ถ.รัชดาภิเษก ดินแดง กรุงเทพฯ</p>
-                    <div class="flex flex-wrap gap-2">
-                        <a href="tel:+66931394538" class="inline-flex items-center space-x-1 gold-gradient text-fin-dark px-4 py-2 rounded-full text-sm font-semibold">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                            <span>093-139-4538</span>
-                        </a>
-                    </div>
+                    <h3 class="font-bold text-fin-dark mb-2">สาขา The Street รัชดา</h3>
+                    <p class="text-fin-gray text-sm mb-4">139 อาคาร The Street Ratchada ชั้น 3 ถ.รัชดาภิเษก ดินแดง กรุงเทพฯ</p>
+                    <a href="tel:+66931394538" class="inline-flex items-center space-x-2 text-fin-dark font-semibold text-sm hover:text-fin-gold transition">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        <span>093-139-4538</span>
+                    </a>
                 </div>
-                <div class="card-lift p-6 rounded-2xl bg-gradient-to-br from-amber-50 to-white border border-amber-100">
-                    <div class="w-12 h-12 gold-gradient rounded-xl flex items-center justify-center mb-4 shadow">
+                <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                    <div class="w-12 h-12 bg-fin-yellow rounded-xl flex items-center justify-center mb-4">
                         <svg class="w-6 h-6 text-fin-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-bold text-fin-dark mb-2">สาขา บางกะปิ</h3>
-                    <p class="text-gray-500 text-sm mb-4">Happy Land Center<br>ถ.ลาดพร้าว กรุงเทพฯ</p>
-                    <div class="flex flex-wrap gap-2">
-                        <a href="tel:+66980189384" class="inline-flex items-center space-x-1 gold-gradient text-fin-dark px-4 py-2 rounded-full text-sm font-semibold">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                            <span>098-018-9384</span>
-                        </a>
-                    </div>
+                    <h3 class="font-bold text-fin-dark mb-2">สาขา บางกะปิ</h3>
+                    <p class="text-fin-gray text-sm mb-4">Happy Land Center ถ.ลาดพร้าว กรุงเทพฯ</p>
+                    <a href="tel:+66931394538" class="inline-flex items-center space-x-2 text-fin-dark font-semibold text-sm hover:text-fin-gold transition">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        <span>093-139-4538</span>
+                    </a>
                 </div>
-                <div class="card-lift p-6 rounded-2xl bg-gradient-to-br from-amber-50 to-white border border-amber-100">
-                    <div class="w-12 h-12 gold-gradient rounded-xl flex items-center justify-center mb-4 shadow">
+                <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                    <div class="w-12 h-12 bg-fin-yellow rounded-xl flex items-center justify-center mb-4">
                         <svg class="w-6 h-6 text-fin-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-bold text-fin-dark mb-2">สาขา Westgate</h3>
-                    <p class="text-gray-500 text-sm mb-4">ถ.ตลาดหลวง-สุพรรณบุรี<br>นนทบุรี</p>
-                    <div class="flex flex-wrap gap-2">
-                        <a href="tel:+66832420458" class="inline-flex items-center space-x-1 gold-gradient text-fin-dark px-4 py-2 rounded-full text-sm font-semibold">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                            <span>083-242-0458</span>
-                        </a>
-                    </div>
+                    <h3 class="font-bold text-fin-dark mb-2">สาขา Westgate</h3>
+                    <p class="text-fin-gray text-sm mb-4">ถ.ตลาดหลวง-สุพรรณบุรี นนทบุรี</p>
+                    <a href="tel:+66931394538" class="inline-flex items-center space-x-2 text-fin-dark font-semibold text-sm hover:text-fin-gold transition">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        <span>093-139-4538</span>
+                    </a>
                 </div>
             </div>
-            <div class="text-center mt-8">
-                <p class="text-gray-500">เปิดให้บริการ: จันทร์ - อาทิตย์ 9:00 - 18:00 น.</p>
-            </div>
+            <p class="text-center text-fin-gray mt-8">เปิดให้บริการ: จันทร์ - อาทิตย์ 9:00 - 18:00 น.</p>
         </div>
     </section>
 
     <!-- CTA -->
-    <section class="py-16 gold-gradient">
+    <section class="hero-bg py-12">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="section-title text-3xl md:text-4xl font-bold text-fin-dark mb-4">สนใจ iPhone รุ่นไหน?</h2>
-            <p class="text-fin-dark/80 text-lg mb-8 max-w-xl mx-auto">ติดต่อสอบถามราคาและโปรโมชั่นพิเศษได้เลย</p>
+            <h2 class="text-2xl md:text-3xl font-bold text-fin-dark mb-4">สนใจ iPhone รุ่นไหน?</h2>
+            <p class="text-fin-dark/80 mb-6">ติดต่อสอบถามราคาและโปรโมชั่นพิเศษได้เลย</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://line.me/R/ti/p/@thunderfin" target="_blank" class="bg-[#06C755] text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center space-x-2 hover:bg-[#05b34d] transition shadow-lg">
+                <a href="https://line.me/R/ti/p/@thunderfin" target="_blank" class="bg-[#06C755] text-white px-8 py-3 rounded-full font-bold flex items-center justify-center space-x-2 hover:bg-[#05b34d] transition shadow-lg">
                     <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.349 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
                     </svg>
-                    <span>Line: @thunderfin</span>
+                    <span>แอดไลน์ @thunderfin</span>
                 </a>
-                <a href="tel:+66931394538" class="bg-fin-dark text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center space-x-2 hover:bg-black transition shadow-lg">
+                <a href="tel:+66931394538" class="bg-white text-fin-dark px-8 py-3 rounded-full font-bold flex items-center justify-center space-x-2 hover:bg-gray-100 transition shadow-lg">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                     </svg>
@@ -531,14 +497,12 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-fin-dark text-white py-12">
+    <footer class="bg-fin-dark text-white py-10">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <div class="mb-4">
-                        <img src="images/logo.png" alt="TunderFin" class="h-14 w-auto brightness-0 invert">
-                    </div>
-                    <p class="text-gray-400 text-sm">ศูนย์จำหน่าย iPhone ครบทุกรุ่น<br>ราคาดี มีประกัน</p>
+                    <img src="images/logo.png" alt="TunderFin" class="h-12 w-auto brightness-0 invert mb-4">
+                    <p class="text-gray-400 text-sm">ศูนย์จำหน่าย iPhone ครบทุกรุ่น ราคาดี มีประกัน</p>
                 </div>
                 <div>
                     <h4 class="font-bold mb-4">บริการ</h4>
@@ -566,19 +530,19 @@
                 </div>
             </div>
             <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
-                <p>&copy; 2024 ThunderFin. All rights reserved.</p>
+                <p>&copy; 2024 TunderFin. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Floating Buttons (Mobile) -->
-    <div class="fixed-buttons fixed bottom-5 right-5 md:hidden z-50 flex flex-col space-y-3">
-        <a href="tel:+66931394538" class="w-14 h-14 gold-gradient rounded-full flex items-center justify-center shadow-xl">
+    <div class="fixed bottom-5 right-5 md:hidden z-50 flex flex-col space-y-3">
+        <a href="tel:+66931394538" class="w-14 h-14 bg-fin-yellow rounded-full flex items-center justify-center shadow-xl">
             <svg class="w-7 h-7 text-fin-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
             </svg>
         </a>
-        <a href="https://line.me/R/ti/p/@thunderfin" target="_blank" class="w-14 h-14 bg-[#06C755] rounded-full flex items-center justify-center shadow-xl glow-btn">
+        <a href="https://line.me/R/ti/p/@thunderfin" target="_blank" class="w-14 h-14 bg-[#06C755] rounded-full flex items-center justify-center shadow-xl">
             <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.349 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
             </svg>
